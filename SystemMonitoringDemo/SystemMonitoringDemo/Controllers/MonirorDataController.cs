@@ -35,9 +35,9 @@ namespace SystemMonitoringDemo.Controllers
         [HttpGet(Name = "GetCPU")]
         public async Task<IActionResult> GetCPU()
         {
-            await _winService.GetCpuUsageAsync();
+            var res = await _winService.GetCpuUsageAsync();
 
-            return Ok(new {code = 200,msh = ""});
+            return Ok(new { code = 200, data = res });
         }
     }
 }

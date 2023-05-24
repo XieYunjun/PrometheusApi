@@ -26,10 +26,10 @@ namespace SystemMonitoringDemo.Extensions
         {
             var entities = new List<MonitorAxisDataDto>();
 
-            var entity = new MonitorAxisDataDto();
-
             foreach (var result in results)
             {
+                var entity = new MonitorAxisDataDto();
+
                 if (this.ContainProperty(result.metric, typeName, out string? name))
                 {
                     entity.TypeName = name;

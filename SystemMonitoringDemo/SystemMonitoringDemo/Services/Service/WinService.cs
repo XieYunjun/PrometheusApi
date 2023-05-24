@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using SystemMonitoringDemo.Base.Dto.MonitirDataDto;
 using SystemMonitoringDemo.Base.Dto.PrometheusDto;
 using SystemMonitoringDemo.Extensions;
 using SystemMonitoringDemo.Services.IService;
@@ -11,13 +12,14 @@ namespace SystemMonitoringDemo.Services.Service
 
         private readonly IConvertDataExtension _convertDataExtension;
 
+
         public WinService(IHttpClientExtension httpClient, IConvertDataExtension convertDataExtension)
         {
             _httpClient = httpClient;
             _convertDataExtension = convertDataExtension;
         }
 
-        public async Task GetCpuUsageAsync()
+        public async Task<List<MonitorAxisDataDto>> GetCpuUsageAsync()
         {
             // query_range?quety=
             // 100 - (avg by(instance)(irate(windows_cpu_time_total{instance="192.168.1.138:9182",mode="idle"}[5m]))*100)
@@ -34,17 +36,20 @@ namespace SystemMonitoringDemo.Services.Service
 
             //dic.Add("query", "100 - (avg by(instance)(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode=\"idle\"}[5m]))*100)");
             dic.Add("query", "(avg without (cpu) (sum(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode!=\"idle\"}[5m])) by (mode)) / 16)* 100");
-            dic.Add("start", "1684887301.38");
-            dic.Add("end", "1684890901.38");
-            dic.Add("step", "14");
+            dic.Add("start", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow.AddMinutes(-10)));
+            dic.Add("end", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow));
+            dic.Add("step", "15");
 
             var res = await _httpClient.GetAsync<PrometheusDataDto>(url,dic);
 
             if (res is not null)
             {
                 var datas = _convertDataExtension.ConvertData(res.data.result, nameof(PrometheusResultMetric.mode));
+
+                return datas;
             }
 
+            return new List<MonitorAxisDataDto>();
         }
 
         public Task GetDiskUsageAsync()

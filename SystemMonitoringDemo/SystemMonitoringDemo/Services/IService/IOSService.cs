@@ -1,4 +1,6 @@
-﻿namespace SystemMonitoringDemo.Services.IService
+﻿using SystemMonitoringDemo.Base.Dto.MonitirDataDto;
+
+namespace SystemMonitoringDemo.Services.IService
 {
     public interface IOSService
     {
@@ -6,7 +8,7 @@
         /// Cpu使用率
         /// </summary>
         /// <returns></returns>
-        Task GetCpuUsageAsync();
+        Task<List<MonitorAxisDataDto>> GetCpuUsageAsync();
 
         /// <summary>
         /// 内存使用率

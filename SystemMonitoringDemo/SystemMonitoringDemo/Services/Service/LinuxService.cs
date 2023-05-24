@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using SystemMonitoringDemo.Base.Dto.MonitirDataDto;
 using SystemMonitoringDemo.Base.Dto.PrometheusDto;
 using SystemMonitoringDemo.Extensions;
 using SystemMonitoringDemo.Services.IService;
@@ -15,7 +16,7 @@ namespace SystemMonitoringDemo.Services.Service
             _httpClient = httpClient;
         }
         #region CpuUsage
-        public async Task GetCpuUsageAsync()
+        public async Task<List<MonitorAxisDataDto>> GetCpuUsageAsync()
         {
 
             // 100 - (avg by(instance) (irate(node_cpu_seconds_total{instance="192.168.1.135:9100",mode="idle"}[5m]))*100)

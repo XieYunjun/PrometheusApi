@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj": {}
+    "F:\\github\\PrometheusApi\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj": {}
   },
   "projects": {
-    "F:\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj": {
+    "F:\\github\\PrometheusApi\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj",
+        "projectUniqueName": "F:\\github\\PrometheusApi\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj",
         "projectName": "SystemMonitoringDemo",
-        "projectPath": "F:\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj",
+        "projectPath": "F:\\github\\PrometheusApi\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj",
         "packagesPath": "C:\\Users\\maiyuanadmin\\.nuget\\packages\\",
-        "outputPath": "F:\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo\\obj\\",
+        "outputPath": "F:\\github\\PrometheusApi\\SystemMonitoringDemo\\SystemMonitoringDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maiyuanadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",

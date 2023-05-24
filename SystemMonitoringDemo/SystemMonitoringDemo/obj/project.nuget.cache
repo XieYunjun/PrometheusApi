@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xkF0R0WFlRKwTMogGKgKIEFxJGB/lTsuABMyrHu2l0uzSe1WcbXnOHSfyC6QuFGGheNJ08L2cXo31b5Kzrb9Vw==",
+  "dgSpecHash": "BZa6ArPmkc7Dzp1f4RQxMNZ4ZkZy+kiDltNOE2kqE76eBeaGHla0dbVMHzatIzY6Z5qHs0UpekBaT67M8qyM+g==",
   "success": true,
-  "projectFilePath": "F:\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj",
+  "projectFilePath": "F:\\github\\PrometheusApi\\SystemMonitoringDemo\\SystemMonitoringDemo\\SystemMonitoringDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maiyuanadmin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\maiyuanadmin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

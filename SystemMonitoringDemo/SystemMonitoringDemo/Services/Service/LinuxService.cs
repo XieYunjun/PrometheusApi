@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using System;
 using System.Text.Json;
 using SystemMonitoringDemo.Base.Dto.MonitirDataDto;
 using SystemMonitoringDemo.Base.Dto.PrometheusDto;
@@ -11,12 +12,15 @@ namespace SystemMonitoringDemo.Services.Service
     {
         private readonly IHttpClientExtension _httpClient;
 
-        public LinuxService(IHttpClientExtension httpClient)
+        private readonly IConvertDataExtension _convertDataExtension;
+
+        public LinuxService(IHttpClientExtension httpClient, IConvertDataExtension convertDataExtension)
         {
             _httpClient = httpClient;
+            _convertDataExtension = convertDataExtension;
         }
         #region CpuUsage
-        public async Task<List<MonitorAxisDataDto>> GetCpuUsageAsync()
+        public async Task<List<MonitorDataDto>> GetCpuUsageAsync(MonitorDataInputDto inputDto)
         {
 
             // 100 - (avg by(instance) (irate(node_cpu_seconds_total{instance="192.168.1.135:9100",mode="idle"}[5m]))*100)
@@ -105,7 +109,7 @@ namespace SystemMonitoringDemo.Services.Service
 
         #endregion
 
-        public Task GetDiskUsageAsync()
+        public async Task<List<MonitorDataDto>> GetDiskUsageAsync(MonitorDataInputDto inputDto)
         {
             // node_filesystem_free_bytes{instance="192.168.1.135:9100"} / node_filesystem_size_bytes{instance="192.168.1.135:9100"}
             // {"status":"success","data":{"resultType":"matrix","result":
@@ -113,6 +117,31 @@ namespace SystemMonitoringDemo.Services.Service
             // {"metric":{"device":"/dev/nvme0n1p2","fstype":"ext4","instance":"192.168.1.135:9100","job":"node","mountpoint":"/"},"values":[[1684118758.291,"0.5111413613472033"]]},
             // {"metric":{"device":"/dev/nvme0n1p2","fstype":"ext4","instance":"192.168.1.135:9100","job":"node","mountpoint":"/var/snap/firefox/common/host-hunspell"},"values":[[1684118758.291,"0.5111413613472033"],[1684118844.291,"0.5111410333958146"]]},
             // {"metric":{"device":"/dev/sda1","fstype":"ext4","instance":"192.168.1.135:9100","job":"node","mountpoint":"/home/mytek135/data"},"values":[[1684118758.291,"0.6241377475467904"]]}]}}
+
+            var url = "http://" + inputDto.PrometheusIpAddress + ":" + inputDto.PrometheusPort + "/api/v1/query_range?";
+            var timeStr = _convertDataExtension.GetTimeStr(inputDto.TimeCoutnt, inputDto.TimeType, out int minutes);
+            var queryStr = "rate(windows_logical_disk_split_ios_total{instance=\"" + inputDto.TargetIpAddress + ":" + inputDto.TargetPort + "\"}[" + timeStr + "])";
+
+            var dic = new Dictionary<string, string>
+            {
+                //dic.Add("query", "(avg without (cpu) (sum(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode!=\"idle\"}[5m])) by (mode)) / 16)* 100");
+                { "query", queryStr },
+                { "start", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow.AddMinutes(-minutes)) },
+                { "end", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow) },
+                { "step", inputDto.Step.ToString() }
+            };
+
+            var res = await _httpClient.GetAsync<PrometheusDataDto>(url, dic);
+
+            if (res is not null)
+            {
+                var datas = _convertDataExtension.ConvertData(res.data.result, nameof(PrometheusResultMetric.volume));
+
+                return datas;
+            }
+
+            return new List<MonitorDataDto>();
+
 
             throw new NotImplementedException();
         }

@@ -34,5 +34,9 @@
         public string? job { get; set; }
 
         public string? mountpoint { get; set; }
+
+        public string? volume { get; set; }
+
+        public string? nic { get; set; }
     }
 }

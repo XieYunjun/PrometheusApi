@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using System.Runtime.Intrinsics.X86;
+using System.Text.Json;
 using SystemMonitoringDemo.Base.Dto.MonitirDataDto;
 using SystemMonitoringDemo.Base.Dto.PrometheusDto;
 using SystemMonitoringDemo.Extensions;
@@ -19,7 +21,7 @@ namespace SystemMonitoringDemo.Services.Service
             _convertDataExtension = convertDataExtension;
         }
 
-        public async Task<List<MonitorAxisDataDto>> GetCpuUsageAsync()
+        public async Task<List<MonitorDataDto>> GetCpuUsageAsync(MonitorDataInputDto inputDto)
         {
             // query_range?quety=
             // 100 - (avg by(instance)(irate(windows_cpu_time_total{instance="192.168.1.138:9182",mode="idle"}[5m]))*100)
@@ -30,15 +32,22 @@ namespace SystemMonitoringDemo.Services.Service
             // [1684195817.088,"3.6460069675956674"]
             // ]}]}}
 
-            var url = "http://127.0.0.1:9090/api/v1/query_range?";
+            //var url = "http://127.0.0.1:9090/api/v1/query_range?";
 
-            var dic = new Dictionary<string, string>();
+            var url = "http://" + inputDto.PrometheusIpAddress + ":" + inputDto.PrometheusPort + "/api/v1/query_range?";
 
-            //dic.Add("query", "100 - (avg by(instance)(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode=\"idle\"}[5m]))*100)");
-            dic.Add("query", "(avg without (cpu) (sum(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode!=\"idle\"}[5m])) by (mode)) / 16)* 100");
-            dic.Add("start", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow.AddMinutes(-10)));
-            dic.Add("end", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow));
-            dic.Add("step", "15");
+            var timeStr = _convertDataExtension.GetTimeStr(inputDto.TimeCoutnt, inputDto.TimeType, out int minutes);
+
+            var queryStr = "(avg without(cpu)(sum(irate(windows_cpu_time_total{instance =\"" + inputDto.TargetIpAddress + ":" + inputDto.TargetPort + "\",mode !=\"idle\"}[" + timeStr + "])) by (mode)) / 16)* 100";
+
+            var dic = new Dictionary<string, string>
+            {
+                //dic.Add("query", "(avg without (cpu) (sum(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode!=\"idle\"}[5m])) by (mode)) / 16)* 100");
+                { "query", queryStr },
+                { "start", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow.AddMinutes(-minutes)) },
+                { "end", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow) },
+                { "step", inputDto.Step.ToString() }
+            };
 
             var res = await _httpClient.GetAsync<PrometheusDataDto>(url,dic);
 
@@ -49,10 +58,10 @@ namespace SystemMonitoringDemo.Services.Service
                 return datas;
             }
 
-            return new List<MonitorAxisDataDto>();
+            return new List<MonitorDataDto>();
         }
 
-        public Task GetDiskUsageAsync()
+        public async Task<List<MonitorDataDto>> GetDiskUsageAsync(MonitorDataInputDto inputDto)
         {
             // query_range?query=
             // rate(windows_logical_disk_split_ios_total{instance="192.168.1.138:9182"}[60m])
@@ -63,7 +72,29 @@ namespace SystemMonitoringDemo.Services.Service
             // {"metric":{"instance":"192.168.1.138:9182","job":"x86-win","volume":"E:"},"values":[[1684196965.960,"0.0005578797445580225"]]},
             // {"metric":{"instance":"192.168.1.138:9182","job":"x86-win","volume":"F:"},"values":[[1684196965.960,"0.6410038264971678"]]}]}}
 
-            throw new NotImplementedException();
+            var url = "http://" + inputDto.PrometheusIpAddress + ":" + inputDto.PrometheusPort + "/api/v1/query_range?";
+            var timeStr = _convertDataExtension.GetTimeStr(inputDto.TimeCoutnt, inputDto.TimeType, out int minutes);
+            var queryStr = "rate(windows_logical_disk_split_ios_total{instance=\"" + inputDto.TargetIpAddress + ":" + inputDto.TargetPort + "\"}[" + timeStr + "])";
+
+            var dic = new Dictionary<string, string>
+            {
+                //dic.Add("query", "(avg without (cpu) (sum(irate(windows_cpu_time_total{instance=\"192.168.1.138:9182\",mode!=\"idle\"}[5m])) by (mode)) / 16)* 100");
+                { "query", queryStr },
+                { "start", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow.AddMinutes(-minutes)) },
+                { "end", TimeStampExtension.GetSecondTimeStamp(DateTime.UtcNow) },
+                { "step", inputDto.Step.ToString() }
+            };
+
+            var res = await _httpClient.GetAsync<PrometheusDataDto>(url, dic);
+
+            if (res is not null)
+            {
+                var datas = _convertDataExtension.ConvertData(res.data.result, nameof(PrometheusResultMetric.volume));
+
+                return datas;
+            }
+
+            return new List<MonitorDataDto>();
         }
 
         public Task GetMemoryUsageAsync()
@@ -78,7 +109,7 @@ namespace SystemMonitoringDemo.Services.Service
             // [1684196337.713,"0.6585498997679343"]
             // ]}]}}
 
-            // 物理内存使用率 query_range?quety=
+            // 物理内存使用率 query_range?query=
             // (windows_cs_physical_memory_bytes{instance = "192.168.1.138:9182"} - windows_os_physical_memory_free_bytes{instance = "192.168.1.138:9182"}) / windows_cs_physical_memory_bytes{instance = "192.168.1.138:9182"} 
             // {"status":"success","data":{"resultType":"matrix","result":[
             // {"metric":{"instance":"192.168.1.138:9182","job":"x86-win"},"values":[

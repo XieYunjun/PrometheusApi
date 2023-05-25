@@ -8,7 +8,7 @@ namespace SystemMonitoringDemo.Services.IService
         /// Cpu使用率
         /// </summary>
         /// <returns></returns>
-        Task<List<MonitorAxisDataDto>> GetCpuUsageAsync();
+        Task<List<MonitorDataDto>> GetCpuUsageAsync(MonitorDataInputDto inputDto);
 
         /// <summary>
         /// 内存使用率
@@ -20,7 +20,7 @@ namespace SystemMonitoringDemo.Services.IService
         /// 磁盘使用率
         /// </summary>
         /// <returns></returns>
-        Task GetDiskUsageAsync();
+        Task<List<MonitorDataDto>> GetDiskUsageAsync(MonitorDataInputDto inputDto);
 
         /// <summary>
         /// 网络流量

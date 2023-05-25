@@ -1,9 +1,11 @@
-﻿namespace SystemMonitoringDemo.Base.Dto.MonitirDataDto
+﻿using SystemMonitoringDemo.Base.Enums.Promethues;
+
+namespace SystemMonitoringDemo.Base.Dto.MonitirDataDto
 {
     /// <summary>
     /// 坐标轴数据
     /// </summary>
-    public class MonitorAxisDataDto
+    public class MonitorDataDto
     {
         /// <summary>
         /// 名称
@@ -44,5 +46,50 @@
     public class MonitorHistogramDataDto
     {
 
+    }
+
+    public class MonitorDataInputDto
+    {
+        /// <summary>
+        /// PrometheusIp
+        /// </summary>
+        public string? PrometheusIpAddress { get; set; }
+
+        /// <summary>
+        /// Prometheus端口
+        /// </summary>
+        public string? PrometheusPort { get; set; }
+
+        /// <summary>
+        /// 目标Ip
+        /// </summary>
+        public string? TargetIpAddress { get; set; }
+
+        /// <summary>
+        /// 目标端口
+        /// </summary>
+        public string? TargetPort { get; set; }
+
+        /// <summary>
+        /// 目标系统类型
+        /// </summary>
+        public SystemType TargetSystemType { get; set; }
+
+        /// <summary>
+        /// 时间长度
+        /// </summary>
+
+        public int TimeCoutnt { get; set; }
+
+        /// <summary>
+        /// 时间类型
+        /// </summary>
+
+        public TimeType TimeType { get; set; }
+
+        /// <summary>
+        /// 查询时间步长
+        /// </summary>
+        public int Step { get; set; }
     }
 }

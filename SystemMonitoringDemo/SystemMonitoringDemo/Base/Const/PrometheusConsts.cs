@@ -1,17 +1,36 @@
 ﻿namespace SystemMonitoringDemo.Base.Const
 {
-    public class PrometheusConsts
+    public static class PrometheusConsts
     {
-        //public readonly static string CONST_MODE = "mode";
+        /// <summary>
+        /// PROMETHEUS 默认端口
+        /// </summary>
+        public readonly static string PROMETHEUS_DEFAULT_PORT = "9090";
 
-        //public readonly static string CONST_INSTANCE = "instance";
+        /// <summary>
+        /// WIN 目标服务器默认端口 
+        /// </summary>
+        public readonly static string WIN_DEFAULT_PORT = "9182";
 
-        //public readonly static string CONST_DEVICE = "device";
+        /// <summary>
+        /// LINUX 目标服务器默认端口 
+        /// </summary>
+        public readonly static string LINUX_DEFAULT_PORT = "9100";
 
-        //public readonly static string CONST_FSTYPE = "fstype";
+        /// <summary>
+        /// 默认Int 值为1
+        /// </summary>
+        public readonly static int DEFAULT_INT = 1;
 
-        //public readonly static string CONST_JOB = "job";
+        /// <summary>
+        /// 小时 h
+        /// </summary>
+        public readonly static string HOUR_STR = "h";
 
-        //public readonly static string CONST_MOUNTPOINT = "mountpoint";
+        /// <summary>
+        /// 分钟 m
+        /// </summary>
+        public readonly static string MINUTES_STR = "m";
+
     }
 }

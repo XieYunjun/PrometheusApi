@@ -55,4 +55,47 @@ namespace SystemMonitoringDemo.Base.Enums.Promethues
         [Description("字符串")]
         _string = 3
     }
+
+    /// <summary>
+    /// 时间类型
+    /// </summary>
+    public enum TimeType
+    {
+        /// <summary>
+        /// 分钟
+        /// </summary>
+        [Description("分钟")]
+        Minutes = 0,
+
+        /// <summary>
+        /// 小时
+        /// </summary>
+        [Description("小时")]
+        Hour = 1,
+    }
+
+    /// <summary>
+    /// 系统类型
+    /// </summary>
+    public enum SystemType
+    {
+        /// <summary>
+        /// 默认本机系统
+        /// </summary>
+        [Description("默认本机系统")]
+        Default = 0,
+
+        /// <summary>
+        /// Win
+        /// </summary>
+        [Description("Win")]
+        Windows = 1,
+
+        /// <summary>
+        /// Linux
+        /// </summary>
+        [Description("Linux")]
+        Linux = 2,
+    }
+
 }

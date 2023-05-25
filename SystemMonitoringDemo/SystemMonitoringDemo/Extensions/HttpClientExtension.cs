@@ -15,6 +15,13 @@ namespace SystemMonitoringDemo.Extensions
         /// <param name="url"></param>
         /// <returns></returns>
         Task<T?> GetAsync<T>(string url, Dictionary<string, string> dic);
+
+        /// <summary>
+        /// 检测地址是否能访问
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        Task<bool> CheckAddressAsync(string url);
     }
 
     public class HttpClientExtension : IHttpClientExtension
@@ -65,6 +72,22 @@ namespace SystemMonitoringDemo.Extensions
             }
 
             return res.ToString().Trim('&');
+        }
+
+        public async Task<bool> CheckAddressAsync(string url)
+        {
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+
+            var httpClient = _httpClientFactory.CreateClient();
+
+            var httpReponseMessage = await httpClient.SendAsync(httpRequestMessage);
+
+            if (httpReponseMessage.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

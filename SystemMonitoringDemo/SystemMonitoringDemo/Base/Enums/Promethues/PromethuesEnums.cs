@@ -3,9 +3,9 @@
 namespace SystemMonitoringDemo.Base.Enums.Promethues
 {
     /// <summary>
-    /// Promerheus 状态错误码
+    /// Prometheus 状态错误码
     /// </summary>
-    public enum ReponseErrorCode
+    public enum ResponseErrorCode
     {
         /// <summary>
         /// 参数错误或者缺失
@@ -72,6 +72,120 @@ namespace SystemMonitoringDemo.Base.Enums.Promethues
         /// </summary>
         [Description("小时")]
         Hour = 1,
+    }
+
+    /// <summary>
+    /// 查询指令类型
+    /// </summary>
+    public enum QueryType
+    {
+        /// <summary>
+        /// WinCpu使用率
+        /// </summary>
+        [Description("WinCpu使用率")]
+        WinGetCpuUsage = 0,
+
+        /// <summary>
+        /// Win磁盘使用率
+        /// </summary>
+        [Description("Win磁盘使用率")]
+        WinGetDiskUsage = 1,
+
+        /// <summary>
+        /// Win虚拟内存使用率
+        /// </summary>
+        [Description("Win虚拟内存使用率")]
+        WinGetVirtualMemoryUsage = 2,
+
+        /// <summary>
+        /// Win物理内存使用率
+        /// </summary>
+        [Description("Win物理内存使用率")]
+        WinGetPhysicalMemoryUsage = 3,
+
+        /// <summary>
+        /// Win网络带宽平均出网
+        /// </summary>
+        [Description("Win网络带宽平均出网")]
+        WinGetNetworkBandwidthSentUse = 4,
+
+        /// <summary>
+        /// Win网络带宽平均入网
+        /// </summary>
+        [Description("Win网络带宽平均入网")]
+        WinGetNetworkBandwidthReceivedUse = 5,
+
+        /// <summary>
+        /// Win网络流量上传
+        /// </summary>
+        [Description("Win网络流量上传")]
+        WinGetNetworkTrafficSent = 6,
+
+        /// <summary>
+        /// Win网络流量下载
+        /// </summary>
+        [Description("Win网络流量下载")]
+        WinGetNetworkTrafficReceived = 7,
+
+        /// <summary>
+        /// LinuxCpu 系统使用率
+        /// </summary>
+        [Description("LinuxCpu 系统使用率")]
+        LinuxGetCpuUsageSystem = 8,
+
+        /// <summary>
+        /// LinuxCpu 用户使用率
+        /// </summary>
+        [Description("LinuxCpu 用户使用率")]
+        LinuxGetCpuUsageUser = 9,
+
+        /// <summary>
+        /// LinuxCpu 磁盘IO 使用率
+        /// </summary>
+        [Description("LinuxCpu 磁盘IO 使用率")]
+        LinuxGetCpuUsageIowait = 10,
+
+        /// <summary>
+        /// LinuxCpu 总使用率
+        /// </summary>
+        [Description("LinuxCpu 总使用率")]
+        LinuxGetCpuUsageTotal = 11,
+
+        /// <summary>
+        /// Linux磁盘使用率
+        /// </summary>
+        [Description("Linux磁盘使用率")]
+        LinuxGetDiskUsage = 12,
+
+        /// <summary>
+        /// Linux内存使用率
+        /// </summary>
+        [Description("Linux内存使用率")]
+        LinuxGetMemoryUsage = 13,
+
+        /// <summary>
+        /// Linux网络带宽平均出网
+        /// </summary>
+        [Description("Linux网络带宽平均出网")]
+        LinuxGetNetworkBandwidthUseSent = 14,
+
+        /// <summary>
+        /// Linux网络带宽平均入网
+        /// </summary>
+        [Description("Linux网络带宽平均入网")]
+        LinuxGetNetworkBandwidthUseReceived = 15,
+
+        /// <summary>
+        /// Linux网络流量上传
+        /// </summary>
+        [Description("Linux网络流量上传")]
+        LinuxGetNetworkTrafficTransmit = 16,
+
+        /// <summary>
+        /// Linux网络流量下载
+        /// </summary>
+        [Description("Linux网络流量下载")]
+        LinuxGetNetworkTrafficReceive = 17,
     }
 
     /// <summary>

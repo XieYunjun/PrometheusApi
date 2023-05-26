@@ -64,3 +64,4 @@ F:\github\PrometheusApi\SystemMonitoringDemo\SystemMonitoringDemo\obj\Debug\net6
 F:\github\PrometheusApi\SystemMonitoringDemo\SystemMonitoringDemo\obj\Debug\net6.0\SystemMonitoringDemo.pdb
 F:\github\PrometheusApi\SystemMonitoringDemo\SystemMonitoringDemo\obj\Debug\net6.0\SystemMonitoringDemo.genruntimeconfig.cache
 F:\github\PrometheusApi\SystemMonitoringDemo\SystemMonitoringDemo\obj\Debug\net6.0\ref\SystemMonitoringDemo.dll
+F:\github\PrometheusApi\SystemMonitoringDemo\SystemMonitoringDemo\bin\Debug\net6.0\MonitorDemoMode.xml

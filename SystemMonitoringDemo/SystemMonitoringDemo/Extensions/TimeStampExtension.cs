@@ -1,7 +1,9 @@
 ﻿namespace SystemMonitoringDemo.Extensions
 {
-
-    public static class TimeStampExtension 
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class TimeStampExtension
     {
         /// <summary>
         /// 获取时间戳

@@ -6,13 +6,17 @@ using System.Text.Json;
 
 namespace SystemMonitoringDemo.Extensions
 {
-
+    /// <summary>
+    /// IHttpClientExtension
+    /// </summary>
     public interface IHttpClientExtension
     {
         /// <summary>
         /// Get
         /// </summary>
         /// <param name="url"></param>
+        /// <param name="dic"></param>
+        /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         Task<T?> GetAsync<T>(string url, Dictionary<string, string> dic);
 
@@ -24,16 +28,29 @@ namespace SystemMonitoringDemo.Extensions
         Task<bool> CheckAddressAsync(string url);
     }
 
+    /// <summary>
+    /// HttpClientExtension
+    /// </summary>
     public class HttpClientExtension : IHttpClientExtension
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
+        /// <summary>
+        /// HttpClientExtension
+        /// </summary>
+        /// <param name="httpClientFactory"></param>
         public HttpClientExtension(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="dic"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public async Task<T?> GetAsync<T>(string url, Dictionary<string, string> dic)
         {
             var query = QueryData(dic);
@@ -74,6 +91,11 @@ namespace SystemMonitoringDemo.Extensions
             return res.ToString().Trim('&');
         }
 
+        /// <summary>
+        /// 检测ip地址
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<bool> CheckAddressAsync(string url)
         {
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, url);

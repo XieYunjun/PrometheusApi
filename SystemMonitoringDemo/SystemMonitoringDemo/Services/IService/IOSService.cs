@@ -2,6 +2,9 @@
 
 namespace SystemMonitoringDemo.Services.IService
 {
+    /// <summary>
+    /// IOSService
+    /// </summary>
     public interface IOSService
     {
         /// <summary>
@@ -14,7 +17,7 @@ namespace SystemMonitoringDemo.Services.IService
         /// 内存使用率
         /// </summary>
         /// <returns></returns>
-        Task GetMemoryUsageAsync();
+        Task<List<MonitorDataDto>> GetMemoryUsageAsync(MonitorDataInputDto inputDto);
 
         /// <summary>
         /// 磁盘使用率
@@ -26,13 +29,13 @@ namespace SystemMonitoringDemo.Services.IService
         /// 网络流量
         /// </summary>
         /// <returns></returns>
-        Task GetNetworkTrafficAsync();
+        Task<List<MonitorDataDto>> GetNetworkTrafficAsync(MonitorDataInputDto inputDto);
 
         /// <summary>
         /// 网络带宽使用
         /// </summary>
         /// <returns></returns>
-        Task GetNetworkBandwidthUseAsync();
+        Task<List<MonitorDataDto>> GetNetworkBandwidthUseAsync(MonitorDataInputDto inputDto);
 
     }
 }

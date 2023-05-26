@@ -1,3 +1,5 @@
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 using SystemMonitoringDemo.AutoMapper;
 using SystemMonitoringDemo.Extensions;
 using SystemMonitoringDemo.Services.IService;
@@ -5,8 +7,15 @@ using SystemMonitoringDemo.Services.Service;
 
 namespace SystemMonitoringDemo
 {
+    /// <summary>
+    /// Program
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +25,13 @@ namespace SystemMonitoringDemo
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen((options) =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "监测服务器资源API", Version = "v1", Description = "基于Prometheus", });
+                var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录
+                var xmlPath = Path.Combine(basePath!, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");//接口action显示注释
+                options.IncludeXmlComments(Path.Combine(basePath!, "MonitorDemoMode.xml"), true);//实体类注释
+            });
 
             builder.Services.AddHttpClient();
 
@@ -38,7 +53,7 @@ namespace SystemMonitoringDemo
                     }
                     else
                     {
-                        throw new ArgumentException($"��֧�ֵ�DI Key: {key}");
+                        throw new ArgumentException($"不支持的DI Key: {key}");
                     }
                 };
                 return func;
@@ -51,7 +66,7 @@ namespace SystemMonitoringDemo
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>c.SwaggerEndpoint("/swagger/v1/swagger.json", "监测服务器资源API v1"));
             }
 
             app.UseAuthorization();

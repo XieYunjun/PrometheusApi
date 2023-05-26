@@ -3,7 +3,7 @@
 namespace SystemMonitoringDemo.Base.Dto.MonitirDataDto
 {
     /// <summary>
-    /// 坐标轴数据
+    /// 数据
     /// </summary>
     public class MonitorDataDto
     {
@@ -35,19 +35,17 @@ namespace SystemMonitoringDemo.Base.Dto.MonitirDataDto
         /// <summary>
         /// 时间戳 列表
         /// </summary>
-        public List<string> Time { get; set; }
+        public List<string>? Time { get; set; }
 
         /// <summary>
         /// 数据列表
         /// </summary>
-        public List<decimal> Data { get; set; }
+        public List<decimal>? Data { get; set; }
     }
 
-    public class MonitorHistogramDataDto
-    {
-
-    }
-
+    /// <summary>
+    /// 输入Input
+    /// </summary>
     public class MonitorDataInputDto
     {
         /// <summary>

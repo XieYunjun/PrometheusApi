@@ -1,0 +1,884 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SystemMonitoringDemo</name>
+    </assembly>
+    <members>
+        <member name="T:SystemMonitoringDemo.AutoMapper.AutoMapperConfig">
+            <summary>
+            AutoMapper
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.AutoMapper.AutoMapperConfig.#ctor">
+            <summary>
+            AutoMapper
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Const.PrometheusConsts">
+            <summary>
+            Prometheus常量
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.PROMETHEUS_DEFAULT_PORT">
+            <summary>
+            PROMETHEUS 默认端口
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.WIN_DEFAULT_PORT">
+            <summary>
+            WIN 目标服务器默认端口 
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.LINUX_DEFAULT_PORT">
+            <summary>
+            LINUX 目标服务器默认端口 
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.DEFAULT_INT">
+            <summary>
+            默认Int 值为1
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.HOUR_STR">
+            <summary>
+            小时 h
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.MINUTES_STR">
+            <summary>
+            分钟 m
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.DEFAULT_STEP">
+            <summary>
+            默认step
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.DEFAULT_TIMECOUNT">
+            <summary>
+            默认时长
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.LINUX_CPU_SYSTEM">
+            <summary>
+            系统CPU
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.LINUX_CPU_USER">
+            <summary>
+            用户CPU
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.LINUX_CPU_IOWAIT">
+            <summary>
+            磁盘ioCPU
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.LINUX_CPU_TOTAL">
+            <summary>
+            总CPU
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.VIRTUAL">
+            <summary>
+            虚拟
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.PHYSICAL">
+            <summary>
+            物理
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.SENT">
+            <summary>
+            上传
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Const.PrometheusConsts.DOWNLOAD">
+            <summary>
+            下载
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.TypeName">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.Min">
+            <summary>
+            最小值
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.Max">
+            <summary>
+            最大值
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.Avg">
+            <summary>
+            平均值
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.Current">
+            <summary>
+            当前值
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.Time">
+            <summary>
+            时间戳 列表
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataDto.Data">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto">
+            <summary>
+            输入Input
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.PrometheusIpAddress">
+            <summary>
+            PrometheusIp
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.PrometheusPort">
+            <summary>
+            Prometheus端口
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.TargetIpAddress">
+            <summary>
+            目标Ip
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.TargetPort">
+            <summary>
+            目标端口
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.TargetSystemType">
+            <summary>
+            目标系统类型
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.TimeCoutnt">
+            <summary>
+            时间长度
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.TimeType">
+            <summary>
+            时间类型
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto.Step">
+            <summary>
+            查询时间步长
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataDto">
+            <summary>
+            PrometheusDataDto
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataDto.status">
+            <summary>
+            状态
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataDto.data">
+            <summary>
+            data
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusData">
+            <summary>
+            PrometheusData
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusData.resultType">
+            <summary>
+            resultType
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusData.result">
+            <summary>
+            result
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataResult">
+            <summary>
+            PrometheusDataResult
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataResult.metric">
+            <summary>
+            metric
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataResult.values">
+            <summary>
+            values
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric">
+            <summary>
+            PrometheusResultMetric
+            </summary>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.mode">
+            <summary>
+            mode
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.instance">
+            <summary>
+            instance
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.device">
+            <summary>
+            device
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.fstype">
+            <summary>
+            fstype
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.job">
+            <summary>
+            job
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.mountpoint">
+            <summary>
+            mountpoint
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.volume">
+            <summary>
+            volume
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.nic">
+            <summary>
+            nic
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusResultMetric.customization">
+            <summary>
+            自定义字段
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Enums.Promethues.ResponseErrorCode">
+            <summary>
+            Prometheus 状态错误码
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseErrorCode.BadRequest">
+            <summary>
+            参数错误或者缺失
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseErrorCode.Unprocessable">
+            <summary>
+            表达式无法执行
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseErrorCode.ServiceUnavailiable">
+            <summary>
+            请求超时或者被中断
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Enums.Promethues.ResponseDataType">
+            <summary>
+            响应数据类型
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseDataType.matrix">
+            <summary>
+            区间向量
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseDataType.vector">
+            <summary>
+            瞬时向量
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseDataType.scalar">
+            <summary>
+            标量
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.ResponseDataType._string">
+            <summary>
+            字符串
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Enums.Promethues.TimeType">
+            <summary>
+            时间类型
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.TimeType.Minutes">
+            <summary>
+            分钟
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.TimeType.Hour">
+            <summary>
+            小时
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Enums.Promethues.QueryType">
+            <summary>
+            查询指令类型
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetCpuUsage">
+            <summary>
+            WinCpu使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetDiskUsage">
+            <summary>
+            Win磁盘使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetVirtualMemoryUsage">
+            <summary>
+            Win虚拟内存使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetPhysicalMemoryUsage">
+            <summary>
+            Win物理内存使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetNetworkBandwidthSentUse">
+            <summary>
+            Win网络带宽平均出网
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetNetworkBandwidthReceivedUse">
+            <summary>
+            Win网络带宽平均入网
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetNetworkTrafficSent">
+            <summary>
+            Win网络流量上传
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.WinGetNetworkTrafficReceived">
+            <summary>
+            Win网络流量下载
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetCpuUsageSystem">
+            <summary>
+            LinuxCpu 系统使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetCpuUsageUser">
+            <summary>
+            LinuxCpu 用户使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetCpuUsageIowait">
+            <summary>
+            LinuxCpu 磁盘IO 使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetCpuUsageTotal">
+            <summary>
+            LinuxCpu 总使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetDiskUsage">
+            <summary>
+            Linux磁盘使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetMemoryUsage">
+            <summary>
+            Linux内存使用率
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetNetworkBandwidthUseSent">
+            <summary>
+            Linux网络带宽平均出网
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetNetworkBandwidthUseReceived">
+            <summary>
+            Linux网络带宽平均入网
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetNetworkTrafficTransmit">
+            <summary>
+            Linux网络流量上传
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.QueryType.LinuxGetNetworkTrafficReceive">
+            <summary>
+            Linux网络流量下载
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Base.Enums.Promethues.SystemType">
+            <summary>
+            系统类型
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.SystemType.Default">
+            <summary>
+            默认本机系统
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.SystemType.Windows">
+            <summary>
+            Win
+            </summary>
+        </member>
+        <member name="F:SystemMonitoringDemo.Base.Enums.Promethues.SystemType.Linux">
+            <summary>
+            Linux
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Controllers.MonirorDataController">
+            <summary>
+            监测
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Controllers.MonirorDataController.#ctor(Microsoft.Extensions.Logging.ILogger{SystemMonitoringDemo.Controllers.MonirorDataController},System.Func{System.Type,SystemMonitoringDemo.Services.IService.IOSService},SystemMonitoringDemo.Extensions.IHttpClientExtension,SystemMonitoringDemo.Extensions.IConvertDataExtension)">
+            <summary>
+            监测
+            </summary>
+            <param name="logger"></param>
+            <param name="oSServiceList"></param>
+            <param name="httpClientExtension"></param>
+            <param name="convertDataExtension"></param>
+        </member>
+        <member name="M:SystemMonitoringDemo.Controllers.MonirorDataController.GetCPUAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Controllers.MonirorDataController.GetMemoryUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            内存使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Controllers.MonirorDataController.GetDiskUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            磁盘使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Controllers.MonirorDataController.GetNetworkTrafficAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络流量
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Controllers.MonirorDataController.GetNetworkBandwidthUseAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络带宽使用
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Extensions.IConvertDataExtension">
+            <summary>
+            IConvertDataExtension
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.IConvertDataExtension.ConvertData(System.Collections.Generic.List{SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataResult},System.String)">
+            <summary>
+            转换数据
+            </summary>
+            <param name="results"></param>
+            <param name="typeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.IConvertDataExtension.ConvertMonitorInputDto(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            InputDto属性数据处理
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.IConvertDataExtension.GetTimeStr(System.Int32,SystemMonitoringDemo.Base.Enums.Promethues.TimeType,System.Int32@)">
+            <summary>
+            获取查询时间段
+            </summary>
+            <param name="timeCount"></param>
+            <param name="type"></param>
+            <param name="minutes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.IConvertDataExtension.GetQueryDic(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto,SystemMonitoringDemo.Base.Enums.Promethues.QueryType,System.String@)">
+            <summary>
+            获取查询Dic
+            </summary>
+            <param name="inputDto"></param>
+            <param name="enum"></param>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Extensions.ConvertDataExtension">
+            <summary>
+            ConvertDataExtension
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.#ctor">
+            <summary>
+            ConvertDataExtension
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.ConvertData(System.Collections.Generic.List{SystemMonitoringDemo.Base.Dto.PrometheusDto.PrometheusDataResult},System.String)">
+            <summary>
+            转换数据
+            </summary>
+            <param name="results"></param>
+            <param name="typeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.GetValue(System.Collections.Generic.List{System.Object[]})">
+            <summary>
+            获取时间数据
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.ContainProperty``1(``0,System.String,System.String@)">
+            <summary>
+            获取值
+            </summary>
+            <param name="instace"></param>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.ConvertMonitorInputDto(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            转换Dto
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.GetSystemType">
+            <summary>
+            获取本机操作系统
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.SystemException"></exception>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.GetLocalIP">
+            <summary>
+            获取本机ip
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.GetTimeStr(System.Int32,SystemMonitoringDemo.Base.Enums.Promethues.TimeType,System.Int32@)">
+            <summary>
+            获取时间段Str
+            </summary>
+            <param name="timeCount"></param>
+            <param name="type"></param>
+            <param name="minutes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.ConvertDataExtension.GetQueryDic(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto,SystemMonitoringDemo.Base.Enums.Promethues.QueryType,System.String@)">
+            <summary>
+            获取查询Query
+            </summary>
+        </member>
+        <member name="T:SystemMonitoringDemo.Extensions.IHttpClientExtension">
+            <summary>
+            IHttpClientExtension
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.IHttpClientExtension.GetAsync``1(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Get
+            </summary>
+            <param name="url"></param>
+            <param name="dic"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.IHttpClientExtension.CheckAddressAsync(System.String)">
+            <summary>
+            检测地址是否能访问
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Extensions.HttpClientExtension">
+            <summary>
+            HttpClientExtension
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.HttpClientExtension.#ctor(System.Net.Http.IHttpClientFactory)">
+            <summary>
+            HttpClientExtension
+            </summary>
+            <param name="httpClientFactory"></param>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.HttpClientExtension.GetAsync``1(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Get
+            </summary>
+            <param name="url"></param>
+            <param name="dic"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.HttpClientExtension.CheckAddressAsync(System.String)">
+            <summary>
+            检测ip地址
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Extensions.TimeStampExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.TimeStampExtension.GetSecondTimeStamp(System.DateTime)">
+            <summary>
+            获取时间戳
+            </summary>
+            <param name="time">DateTime.Now: 电脑上当前时间  DateTime.UtcNow: 世界当前时间（比北京时间少8小时）</param>
+            <returns>精确到秒</returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.TimeStampExtension.GetMilliTimeStamp(System.DateTime)">
+            <summary>
+            获取时间戳
+            </summary>
+            <param name="time">DateTime.Now: 电脑上当前时间  DateTime.UtcNow: 世界当前时间（比北京时间少8小时）</param>
+            <returns>精确到毫秒</returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Extensions.TimeStampExtension.TimeStampToDateTime(System.Int64)">
+            <summary>
+            时间戳转时间
+            </summary>
+            <param name="tm"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:SystemMonitoringDemo.Services.IService.IOSService">
+            <summary>
+            IOSService
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.IService.IOSService.GetCpuUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu使用率
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.IService.IOSService.GetMemoryUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            内存使用率
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.IService.IOSService.GetDiskUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            磁盘使用率
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.IService.IOSService.GetNetworkTrafficAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络流量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.IService.IOSService.GetNetworkBandwidthUseAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络带宽使用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Services.Service.LinuxService">
+            <summary>
+            LinuxService
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.#ctor(SystemMonitoringDemo.Extensions.IHttpClientExtension,SystemMonitoringDemo.Extensions.IConvertDataExtension)">
+            <summary>
+            LinuxService
+            </summary>
+            <param name="httpClient"></param>
+            <param name="convertDataExtension"></param>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetCpuUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            获取Cpu
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetCpuUsageSystemAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu 系统使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetCpuUsageUserAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu 用户使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetCpuUsageIowaitAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu 磁盘IO 使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetCpuUsageTotalAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu 总使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetDiskUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            磁盘使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetMemoryUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            内存使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetNetworkBandwidthUseAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络带宽使用
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.LinuxService.GetNetworkTrafficAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络流量
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SystemMonitoringDemo.Services.Service.WinService">
+            <summary>
+            WinService
+            </summary>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.#ctor(SystemMonitoringDemo.Extensions.IHttpClientExtension,SystemMonitoringDemo.Extensions.IConvertDataExtension)">
+            <summary>
+            WinService
+            </summary>
+            <param name="httpClient"></param>
+            <param name="convertDataExtension"></param>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetCpuUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            Cpu使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetDiskUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            磁盘使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetMemoryUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            内存使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetVirtualMemoryUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            虚拟内存使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetPhysicalMemoryUsageAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            物理内存使用率
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetNetworkBandwidthUseAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络带宽使用
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SystemMonitoringDemo.Services.Service.WinService.GetNetworkTrafficAsync(SystemMonitoringDemo.Base.Dto.MonitirDataDto.MonitorDataInputDto)">
+            <summary>
+            网络流量
+            </summary>
+            <param name="inputDto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
